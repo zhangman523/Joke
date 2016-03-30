@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="5dp"
+      android:background="@color/divider"
+      />
+  <RelativeLayout
+      android:id="@+id/parent_rl"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="5dp"
+      >
+    <TextView
+        android:id="@+id/content_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="还说神马来一场说走就走的旅行，\r\n工作后就连一场说走就走的下班都不行。"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="16dp"
+        />
+    <ImageView
+        android:id="@+id/share_iv"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/content_label"
+        android:layout_marginTop="5dp"
+        android:src="@android:drawable/ic_menu_share"
+        />
+    <TextView
+        android:id="@+id/time_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/content_label"
+        android:layout_marginTop="5dp"
+        android:text="2014-12-17 19:13:57"
+        android:textColor="@color/secondary_text"
+        android:textSize="14dp"
+        />
+  </RelativeLayout>
+</LinearLayout>

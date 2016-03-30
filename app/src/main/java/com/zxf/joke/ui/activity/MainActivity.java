@@ -26,8 +26,8 @@ import com.zxf.joke.ui.view.IMainView;
 
 public class MainActivity extends BaseActivity<MainPresenter> implements IMainView {
 
-  @Bind(R.id.container) private ViewPager mViewPager;
-  @Bind(R.id.tabs) private TabLayout tabLayout;
+  @Bind(R.id.container) protected ViewPager mViewPager;
+  @Bind(R.id.tabs) protected TabLayout tabLayout;
   private SectionsPagerAdapter mSectionsPagerAdapter;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
