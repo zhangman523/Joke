@@ -10,7 +10,7 @@ import java.util.List;
 public class JokeTextData extends BaseData {
   public Result result;
 
-  class Result {
+  public class Result {
     public List<JokeText> data;
   }
 }

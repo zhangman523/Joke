@@ -1,5 +1,7 @@
 package com.zxf.joke.presenter;
 
+import com.zxf.joke.core.Joke;
+import com.zxf.joke.core.MainFactory;
 import com.zxf.joke.ui.view.IBaseView;
 
 /**
@@ -8,6 +10,8 @@ import com.zxf.joke.ui.view.IBaseView;
  */
 public class BasePresenter<GV extends IBaseView> {
   protected GV mView;
+  
+  public static final Joke mJoke = MainFactory.getJokeInstance();
 
   public BasePresenter(GV view) {
     this.mView = view;

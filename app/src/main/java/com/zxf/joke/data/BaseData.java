@@ -5,7 +5,7 @@ package com.zxf.joke.data;
  * Email: zhangman523@126.com
  */
 public class BaseData {
-  public String error_code;
+  public int error_code;
   public String reason;
 
 }
