@@ -8,21 +8,21 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import butterknife.Bind;
 import com.zxf.joke.R;
-import com.zxf.joke.data.entity.JokeText;
-import com.zxf.joke.presenter.JokeTextPresenter;
-import com.zxf.joke.ui.adapter.JokeTextAdapter;
+import com.zxf.joke.data.entity.JokeImage;
+import com.zxf.joke.presenter.JokeImagePresenter;
+import com.zxf.joke.ui.adapter.JokeImageAdapter;
 import com.zxf.joke.ui.view.IJokeView;
 import java.util.List;
 
 /**
- * Created by zhangman on 16/3/29 14:30.
+ * Created by zhangman on 16/3/31 10:28.
  * Email: zhangman523@126.com
  */
-public class JokeTextFragment extends BaseSwipeRefreshFragment<JokeTextPresenter>
-    implements IJokeView<JokeText>, JokeTextAdapter.OnJokeTextItemClick {
-
+public class JokeImageFragment extends BaseSwipeRefreshFragment<JokeImagePresenter>
+    implements IJokeView<JokeImage>, JokeImageAdapter.IOnItemClickListener {
   @Bind(R.id.recyclerView) RecyclerView recyclerView;
-  private JokeTextAdapter mAdapter;
+
+  private JokeImageAdapter mAdapter;
   /**
    * the flag of has more data or not
    */
@@ -42,8 +42,7 @@ public class JokeTextFragment extends BaseSwipeRefreshFragment<JokeTextPresenter
   private void initViews() {
     final LinearLayoutManager layoutManager = new LinearLayoutManager(mActivity);
     recyclerView.setLayoutManager(layoutManager);
-    mAdapter = new JokeTextAdapter();
-    mAdapter.setOnJokeTextItemClick(this);
+    mAdapter = new JokeImageAdapter(this);
     recyclerView.setAdapter(mAdapter);
 
     recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -62,20 +61,16 @@ public class JokeTextFragment extends BaseSwipeRefreshFragment<JokeTextPresenter
     mPresenter.getData();
   }
 
-  @Override protected void initPresenter() {
-    mPresenter = new JokeTextPresenter(this);
-  }
-
-  @Override protected int getLayout() {
-    return R.layout.fragment_joke;
-  }
-
   @Override protected void onRefreshStarted() {
     mPresenter.getData();
   }
 
-  @Override protected boolean prepareRefresh() {
-    return super.prepareRefresh();
+  @Override protected void initPresenter() {
+    mPresenter = new JokeImagePresenter(this);
+  }
+
+  @Override protected int getLayout() {
+    return R.layout.fragment_joke;
   }
 
   @Override public void showEmptyView() {
@@ -95,19 +90,11 @@ public class JokeTextFragment extends BaseSwipeRefreshFragment<JokeTextPresenter
     errorSnack.show();
   }
 
-  @Override public void OnItemClick(int position) {
-    // TODO: 16/3/30
-  }
-
-  @Override public void OnShareClick(int position) {
-
-  }
-
-  @Override public void fillData(List<JokeText> data) {
+  @Override public void fillData(List<JokeImage> data) {
     mAdapter.update(data);
   }
 
-  @Override public void appendMoreDataToView(List<JokeText> data) {
+  @Override public void appendMoreDataToView(List<JokeImage> data) {
     mAdapter.loadMoreData(data);
   }
 
@@ -120,5 +107,13 @@ public class JokeTextFragment extends BaseSwipeRefreshFragment<JokeTextPresenter
           }
         })
         .show();
+  }
+
+  @Override public void OnItemClick(int position) {
+
+  }
+
+  @Override public void OnShareClick(int position) {
+
   }
 }

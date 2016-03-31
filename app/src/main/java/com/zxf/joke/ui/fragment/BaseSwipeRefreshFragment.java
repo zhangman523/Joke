@@ -19,7 +19,7 @@ public abstract class BaseSwipeRefreshFragment<P extends BasePresenter> extends 
 
   @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
-    initPresenter();
+    initSwipeLayout();
   }
 
   private void initSwipeLayout() {

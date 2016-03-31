@@ -8,6 +8,7 @@ package com.zxf.joke.ui.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import com.zxf.joke.ui.fragment.JokeImageFragment;
 import com.zxf.joke.ui.fragment.JokeTextFragment;
 
 /**
@@ -15,7 +16,7 @@ import com.zxf.joke.ui.fragment.JokeTextFragment;
  * one of the sections/tabs/pages.
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
-  private Fragment[] fragments = new Fragment[] { new JokeTextFragment(), new JokeTextFragment() };
+  private Fragment[] fragments = new Fragment[] { new JokeTextFragment(), new JokeImageFragment() };
   private String[] titles = new String[] { "段子", "趣图" };
 
   public SectionsPagerAdapter(FragmentManager fm) {

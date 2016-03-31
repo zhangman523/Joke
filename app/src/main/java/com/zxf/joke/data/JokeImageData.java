@@ -10,7 +10,7 @@ import java.util.List;
 public class JokeImageData {
   public Result result;
 
-  class Result {
+  public class Result {
     public List<JokeImage> data;
   }
 }

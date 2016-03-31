@@ -4,6 +4,7 @@ import com.zxf.joke.data.JokeImageData;
 import com.zxf.joke.data.JokeTextData;
 import retrofit.http.GET;
 import retrofit.http.Path;
+import retrofit.http.Query;
 import rx.Observable;
 
 /**
@@ -11,11 +12,11 @@ import rx.Observable;
  * Email: zhangman523@126.com
  */
 public interface Joke {
-  @GET("/content/text.from?key={Key}&page={Page}&pagesize={PageSize}")
-  Observable<JokeTextData> getJokeTextData(@Path("Key") String key, @Path("Page") int page,
-      @Path("PageSize") int pageSize);
+  @GET("/content/text.from")
+  Observable<JokeTextData> getJokeTextData(@Query("key") String key, @Query("page") int page,
+      @Query("pagesize") int pageSize);
 
-  @GET("/content/text.from?key={Key}&page={Page}&pagesize={PageSize}")
-  Observable<JokeImageData> getJokeImageData(@Path("Key") String key, @Path("Page") int page,
-      @Path("PageSize") int pageSize);
+  @GET("/img/text.from")
+  Observable<JokeImageData> getJokeImageData(@Query("key") String key, @Query("page") int page,
+      @Query("pagesize") int pageSize);
 }
