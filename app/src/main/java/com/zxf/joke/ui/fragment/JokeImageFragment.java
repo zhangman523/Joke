@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import butterknife.Bind;
+import com.bumptech.glide.Glide;
 import com.zxf.joke.R;
 import com.zxf.joke.data.entity.JokeImage;
 import com.zxf.joke.presenter.JokeImagePresenter;
@@ -55,6 +56,25 @@ public class JokeImageFragment extends BaseSwipeRefreshFragment<JokeImagePresent
           mPresenter.getData();
         } else if (!mHasMoreData) {
           hasNoMoreData();
+        }
+      }
+
+      @Override public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+        super.onScrollStateChanged(recyclerView, newState);
+        switch (newState) {
+          case RecyclerView.SCROLL_STATE_SETTLING:
+            //Log.i("Main","用户在手指离开屏幕之前，由于滑了一下，视图仍然依靠惯性继续滑动");
+            Glide.with(JokeImageFragment.this).pauseRequests();
+            //刷新
+            break;
+          case RecyclerView.SCROLL_STATE_IDLE:
+            //Log.i("Main", "视图已经停止滑动");
+            Glide.with(JokeImageFragment.this).resumeRequests();
+            break;
+          case RecyclerView.SCROLL_STATE_DRAGGING:
+            //Log.i("Main","手指没有离开屏幕，视图正在滑动");
+            Glide.with(JokeImageFragment.this).resumeRequests();
+            break;
         }
       }
     });

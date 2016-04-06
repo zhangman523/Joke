@@ -1,8 +1,8 @@
 package com.zxf.joke.ui.adapter;
 
-import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.zxf.joke.R;
 import com.zxf.joke.data.entity.JokeImage;
 import java.util.ArrayList;
@@ -75,10 +76,11 @@ public class JokeImageAdapter extends RecyclerView.Adapter<JokeImageAdapter.View
       contentLabel.setText(data.content);
       timeLabel.setText(data.updatetime);
       Glide.with(mFragment)
-          .load(data.url)
+          .load(data.url).asGif()
           .centerCrop()
+          .dontAnimate()
+          .diskCacheStrategy(DiskCacheStrategy.SOURCE)
           .placeholder(R.mipmap.ic_launcher)
-          .crossFade()
           .into(jokeImage);
     }
   }
