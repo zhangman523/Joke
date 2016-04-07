@@ -44,6 +44,7 @@ public class JokeImageFragment extends BaseSwipeRefreshFragment<JokeImagePresent
     final LinearLayoutManager layoutManager = new LinearLayoutManager(mActivity);
     recyclerView.setLayoutManager(layoutManager);
     mAdapter = new JokeImageAdapter(this);
+      mAdapter.setIOnItemClickListener(this);
     recyclerView.setAdapter(mAdapter);
     recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
       @Override public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
