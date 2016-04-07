@@ -1,5 +1,6 @@
 package com.zxf.joke.ui.fragment;
 
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -45,7 +46,7 @@ public class JokeImageFragment extends BaseSwipeRefreshFragment<JokeImagePresent
     recyclerView.setLayoutManager(layoutManager);
     mAdapter = new JokeImageAdapter(this);
     recyclerView.setAdapter(mAdapter);
-
+    int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.appbar_padding_top);
     recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
       @Override public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
         super.onScrolled(recyclerView, dx, dy);
