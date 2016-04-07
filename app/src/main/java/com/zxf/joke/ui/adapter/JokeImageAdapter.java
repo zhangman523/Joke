@@ -76,7 +76,8 @@ public class JokeImageAdapter extends RecyclerView.Adapter<JokeImageAdapter.View
       contentLabel.setText(data.content);
       timeLabel.setText(data.updatetime);
       Glide.with(mFragment)
-          .load(data.url).asGif()
+          .load(data.url)
+          .asGif()
           .centerCrop()
           .dontAnimate()
           .diskCacheStrategy(DiskCacheStrategy.SOURCE)
