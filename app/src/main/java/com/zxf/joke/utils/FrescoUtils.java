@@ -39,7 +39,8 @@ public class FrescoUtils {
           anim.start();
         }
         if (imageInfo != null) {
-          simpleDraweeView.setAspectRatio(imageInfo.getWidth() / imageInfo.getHeight());
+          simpleDraweeView.setAspectRatio(imageInfo.getWidth() / imageInfo.getHeight() <= 0 ? 1
+              : imageInfo.getWidth() / imageInfo.getHeight());
         }
       }
     };
