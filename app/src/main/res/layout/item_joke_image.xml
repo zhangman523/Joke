@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
     android:layout_marginTop="11dp"
-    card_view:cardCornerRadius="4dp"
-    card_view:cardUseCompatPadding="true"
+    app:cardCornerRadius="4dp"
+    app:cardUseCompatPadding="true"
     >
   <RelativeLayout
       android:id="@+id/parent_rl"
@@ -25,30 +25,34 @@
         android:textColor="@color/colorPrimaryText"
         android:textSize="16dp"
         />
-    <ImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/joke_image"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/content_label"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:scaleType="centerCrop"
+        app:viewAspectRatio="1.0"
+        app:placeholderImage="@mipmap/ic_default"
+        app:placeholderImageScaleType="centerCrop"
         />
     <ImageView
         android:id="@+id/share_iv"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignParentRight="true"
         android:layout_below="@id/joke_image"
         android:layout_marginTop="5dp"
+        android:padding="5dp"
         android:src="@android:drawable/ic_menu_share"
         />
     <TextView
         android:id="@+id/time_label"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_below="@id/joke_image"
         android:layout_marginTop="5dp"
+        android:gravity="center"
         android:text="2014-12-17 19:13:57"
         android:textColor="@color/secondary_text"
         android:textSize="14dp"

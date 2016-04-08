@@ -1,19 +1,31 @@
 package com.zxf.joke.ui.fragment;
 
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import butterknife.Bind;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.Target;
 import com.zxf.joke.R;
 import com.zxf.joke.data.entity.JokeImage;
 import com.zxf.joke.presenter.JokeImagePresenter;
 import com.zxf.joke.ui.adapter.JokeImageAdapter;
 import com.zxf.joke.ui.view.IJokeView;
+import java.io.File;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by zhangman on 16/3/31 10:28.
@@ -44,7 +56,7 @@ public class JokeImageFragment extends BaseSwipeRefreshFragment<JokeImagePresent
     final LinearLayoutManager layoutManager = new LinearLayoutManager(mActivity);
     recyclerView.setLayoutManager(layoutManager);
     mAdapter = new JokeImageAdapter(this);
-      mAdapter.setIOnItemClickListener(this);
+    mAdapter.setIOnItemClickListener(this);
     recyclerView.setAdapter(mAdapter);
     recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
       @Override public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -133,7 +145,53 @@ public class JokeImageFragment extends BaseSwipeRefreshFragment<JokeImagePresent
 
   }
 
-  @Override public void OnShareClick(int position) {
+  @Override public void OnShareClick(final int position) {
+    Observable.create(new Observable.OnSubscribe<File>() {
+      @Override public void call(Subscriber<? super File> subscriber) {
+        try {
+          File file = Glide.with(mActivity)
+              .load(mAdapter.getItem(position).url)
+              .downloadOnly(500, 500)
+              .get();
+          subscriber.onNext(file);
+          subscriber.onCompleted();
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        } catch (ExecutionException e) {
+          e.printStackTrace();
+        }
+      }
+    }).map(new Func1<File, String>() {
+      @Override public String call(File file) {
+        return file.getPath();
+      }
+    }).subscribeOn(Schedulers.io())// 指定 subscribe() 发生在 IO 线程
+        .observeOn(AndroidSchedulers.mainThread())// 指定 Subscriber 的回调发生在主线程
+        .subscribe(new Subscriber<String>() {
+          @Override public void onCompleted() {
 
+          }
+
+          @Override public void onError(Throwable e) {
+            e.printStackTrace();
+          }
+
+          @Override public void onNext(String s) {
+            Log.e("--path---", s);
+            shareImage(s);
+          }
+        });
+  }
+
+  private void shareImage(String url) {
+    String imagePath = url;
+    //由文件得到uri
+    Uri imageUri = Uri.fromFile(new File(imagePath));
+    Log.d("share", "uri:" + imageUri);
+    Intent shareIntent = new Intent();
+    shareIntent.setAction(Intent.ACTION_SEND);
+    shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
+    shareIntent.setType("image/*");
+    startActivity(Intent.createChooser(shareIntent, "分享到"));
   }
 }

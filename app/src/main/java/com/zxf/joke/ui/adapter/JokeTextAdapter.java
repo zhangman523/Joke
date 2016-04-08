@@ -74,6 +74,10 @@ public class JokeTextAdapter extends RecyclerView.Adapter<JokeTextAdapter.JokeTe
     }
   }
 
+  public JokeText getItem(int position) {
+    return mDatas.get(position);
+  }
+
   static class JokeTextViewHolder extends RecyclerView.ViewHolder {
     @Bind(R.id.content_label) TextView contentLabel;
     @Bind(R.id.share_iv) ImageView shareIv;

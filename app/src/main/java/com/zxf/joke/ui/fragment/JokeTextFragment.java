@@ -1,5 +1,6 @@
 package com.zxf.joke.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -96,11 +97,10 @@ public class JokeTextFragment extends BaseSwipeRefreshFragment<JokeTextPresenter
   }
 
   @Override public void OnItemClick(int position) {
-    // TODO: 16/3/30
   }
 
   @Override public void OnShareClick(int position) {
-
+    shareText(mAdapter.getItem(position).content);
   }
 
   @Override public void fillData(List<JokeText> data) {
@@ -120,5 +120,15 @@ public class JokeTextFragment extends BaseSwipeRefreshFragment<JokeTextPresenter
           }
         })
         .show();
+  }
+
+  private void shareText(String shareText) {
+    Intent shareIntent = new Intent();
+    shareIntent.setAction(Intent.ACTION_SEND);
+    shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
+    shareIntent.setType("text/plain");
+
+    //设置分享列表的标题，并且每次都显示分享列表
+    startActivity(Intent.createChooser(shareIntent, "分享到"));
   }
 }
