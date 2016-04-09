@@ -1,5 +1,7 @@
 package com.zxf.joke.core;
 
+import com.zxf.joke.BuildConfig;
+
 /**
  * Created by zhangman on 16/3/29 10:24.
  * Email: zhangman523@126.com
@@ -7,7 +9,7 @@ package com.zxf.joke.core;
 public class MainFactory {
   public static final String HOST = "http://japi.juhe.cn/joke";
 
-  public static final String JOKE_KEY = "b52f0a798e8672a186c096af7261dc48";
+  public static final String JOKE_KEY = BuildConfig.JUHE_KEY;
 
   public static final int PAGE_SIZE = 20;
 

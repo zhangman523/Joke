@@ -1,5 +1,6 @@
 package com.zxf.joke.ui.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -18,6 +19,7 @@ import com.zxf.joke.data.entity.JokeImage;
 import com.zxf.joke.presenter.JokeImagePresenter;
 import com.zxf.joke.ui.adapter.JokeImageAdapter;
 import com.zxf.joke.ui.view.IJokeView;
+import com.zxf.joke.utils.OkhttpUtils;
 import java.io.File;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -46,6 +48,7 @@ public class JokeImageFragment extends BaseSwipeRefreshFragment<JokeImagePresent
    * default is load more data
    */
   boolean isLoadMore = true;
+  private ProgressDialog progressDialog;
 
   @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
@@ -68,25 +71,6 @@ public class JokeImageFragment extends BaseSwipeRefreshFragment<JokeImagePresent
           mPresenter.getData();
         } else if (!mHasMoreData) {
           hasNoMoreData();
-        }
-      }
-
-      @Override public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-        super.onScrollStateChanged(recyclerView, newState);
-        switch (newState) {
-          case RecyclerView.SCROLL_STATE_SETTLING:
-            //Log.i("Main","用户在手指离开屏幕之前，由于滑了一下，视图仍然依靠惯性继续滑动");
-            Glide.with(JokeImageFragment.this).pauseRequests();
-            //刷新
-            break;
-          case RecyclerView.SCROLL_STATE_IDLE:
-            //Log.i("Main", "视图已经停止滑动");
-            Glide.with(JokeImageFragment.this).resumeRequests();
-            break;
-          case RecyclerView.SCROLL_STATE_DRAGGING:
-            //Log.i("Main","手指没有离开屏幕，视图正在滑动");
-            Glide.with(JokeImageFragment.this).resumeRequests();
-            break;
         }
       }
     });
@@ -146,41 +130,21 @@ public class JokeImageFragment extends BaseSwipeRefreshFragment<JokeImagePresent
   }
 
   @Override public void OnShareClick(final int position) {
-    Observable.create(new Observable.OnSubscribe<File>() {
-      @Override public void call(Subscriber<? super File> subscriber) {
-        try {
-          File file = Glide.with(mActivity)
-              .load(mAdapter.getItem(position).url)
-              .downloadOnly(500, 500)
-              .get();
-          subscriber.onNext(file);
-          subscriber.onCompleted();
-        } catch (InterruptedException e) {
-          e.printStackTrace();
-        } catch (ExecutionException e) {
-          e.printStackTrace();
-        }
+    progressDialog = ProgressDialog.show(mActivity, "分享中...", null, false, false);
+    OkhttpUtils.downloadFile(mAdapter.getItem(position).url).subscribe(new Subscriber<String>() {
+      @Override public void onCompleted() {
+
       }
-    }).map(new Func1<File, String>() {
-      @Override public String call(File file) {
-        return file.getPath();
+
+      @Override public void onError(Throwable e) {
+        e.printStackTrace();
       }
-    }).subscribeOn(Schedulers.io())// 指定 subscribe() 发生在 IO 线程
-        .observeOn(AndroidSchedulers.mainThread())// 指定 Subscriber 的回调发生在主线程
-        .subscribe(new Subscriber<String>() {
-          @Override public void onCompleted() {
 
-          }
-
-          @Override public void onError(Throwable e) {
-            e.printStackTrace();
-          }
-
-          @Override public void onNext(String s) {
-            Log.e("--path---", s);
-            shareImage(s);
-          }
-        });
+      @Override public void onNext(String s) {
+        progressDialog.dismiss();
+        shareImage(s);
+      }
+    });
   }
 
   private void shareImage(String url) {
