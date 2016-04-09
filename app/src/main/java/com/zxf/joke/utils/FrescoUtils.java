@@ -22,7 +22,6 @@ public class FrescoUtils {
     if (simpleDraweeView == null || TextUtils.isEmpty(url)) {
       throw new IllegalArgumentException("IllegalArgumentException freco");
     }
-    GenericDraweeHierarchy hierarchy = simpleDraweeView.getHierarchy();
     Uri uri = Uri.parse(url);
     simpleDraweeView.setImageURI(uri);
   }

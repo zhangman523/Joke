@@ -55,7 +55,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
     int id = item.getItemId();
 
     //noinspection SimplifiableIfStatement
-    if (id == R.id.action_settings) {
+    if (id == R.id.action_about) {
+      // TODO: 16/4/9  
       return true;
     }
 
