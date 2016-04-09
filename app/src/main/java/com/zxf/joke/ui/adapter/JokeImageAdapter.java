@@ -102,14 +102,6 @@ public class JokeImageAdapter extends RecyclerView.Adapter<JokeImageAdapter.View
       } else {
         FrescoUtils.loadImage(jokeImage, data.url);
       }
-      //Glide.with(mFragment)
-      //    .load(data.url)
-      //    .asGif()
-      //    .centerCrop()
-      //    .dontAnimate()
-      //    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-      //    .placeholder(R.mipmap.ic_default)
-      //    .into(jokeImage);
     }
   }
 

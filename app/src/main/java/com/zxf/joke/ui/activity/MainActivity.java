@@ -23,6 +23,7 @@ import com.zxf.joke.R;
 import com.zxf.joke.presenter.MainPresenter;
 import com.zxf.joke.ui.adapter.SectionsPagerAdapter;
 import com.zxf.joke.ui.view.IMainView;
+import com.zxf.joke.utils.DialogUtils;
 
 public class MainActivity extends BaseActivity<MainPresenter> implements IMainView {
 
@@ -56,7 +57,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
 
     //noinspection SimplifiableIfStatement
     if (id == R.id.action_about) {
-      // TODO: 16/4/9  
+      DialogUtils.showCustomDialog(this, getSupportFragmentManager(), getString(R.string.action_about), "about_app.html", "about");
       return true;
     }
 

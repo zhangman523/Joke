@@ -10,10 +10,14 @@ import com.zxf.joke.ui.view.IBaseView;
  */
 public class BasePresenter<GV extends IBaseView> {
   protected GV mView;
-  
+
   public static final Joke mJoke = MainFactory.getJokeInstance();
 
   public BasePresenter(GV view) {
     this.mView = view;
+  }
+
+  public void onDestory() {//GC
+    mView = null;
   }
 }

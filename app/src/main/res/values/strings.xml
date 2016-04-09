@@ -4,4 +4,6 @@
   <string name="error_index_load">无法加载数据，请检查网络连接。点击可重试。</string>
 
   <string name="action_about">关于</string>
+  <string name="unknow">未知</string>
+
 </resources>
