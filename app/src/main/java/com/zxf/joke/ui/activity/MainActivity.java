@@ -24,6 +24,7 @@ import com.zxf.joke.presenter.MainPresenter;
 import com.zxf.joke.ui.adapter.SectionsPagerAdapter;
 import com.zxf.joke.ui.view.IMainView;
 import com.zxf.joke.utils.DialogUtils;
+import qiu.niorgai.StatusBarCompat;
 
 public class MainActivity extends BaseActivity<MainPresenter> implements IMainView {
 
@@ -33,7 +34,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
+    StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.colorPrimary));
     // Create the adapter that will return a fragment for each of the three
     // primary sections of the activity.
     mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -57,7 +58,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
 
     //noinspection SimplifiableIfStatement
     if (id == R.id.action_about) {
-      DialogUtils.showCustomDialog(this, getSupportFragmentManager(), getString(R.string.action_about), "about_app.html", "about");
+      DialogUtils.showCustomDialog(this, getSupportFragmentManager(),
+          getString(R.string.action_about), "about_app.html", "about");
       return true;
     }
 

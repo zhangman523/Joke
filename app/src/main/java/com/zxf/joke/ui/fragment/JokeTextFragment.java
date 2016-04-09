@@ -72,7 +72,7 @@ public class JokeTextFragment extends BaseSwipeRefreshFragment<JokeTextPresenter
   }
 
   @Override protected void onRefreshStarted() {
-    mPresenter.getData();
+    mPresenter.getLastJoke();
   }
 
   @Override protected boolean prepareRefresh() {

@@ -109,4 +109,5 @@ dependencies {
   compile 'com.android.support:cardview-v7:23.2.1'
   compile 'com.facebook.fresco:fresco:0.9.0'
   compile 'cn.edu.zafu:coreprogress:0.0.1'
+  compile 'com.github.niorgai:StatusBarCompat:1.0.1'
 }

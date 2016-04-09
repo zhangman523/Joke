@@ -58,4 +58,8 @@ public class JokeTextPresenter extends BasePresenter<IJokeView> {
         });
   }
 
+  public void getLastJoke() {
+    currentPage = 1;
+    getData();
+  }
 }
