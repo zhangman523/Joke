@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.zxf.joke.R;
+import net.youmi.android.spot.SplashView;
 
 /**
  * Created by zhangman1 on 16/4/10.

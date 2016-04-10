@@ -15,6 +15,8 @@ android {
     versionCode 1
     versionName "1.0"
     buildConfigField "String", "JUHE_KEY", "\"" + JUHE_KEY + "\""
+    buildConfigField "String", "YOUMI_APP_ID", "\"" + YOUMI_APP_ID + "\""
+    buildConfigField "String", "YOUMI_SECRET", "\"" + YOUMI_SECRET + "\""
   }
 
   signingConfigs {
