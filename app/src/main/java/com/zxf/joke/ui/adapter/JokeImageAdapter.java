@@ -2,23 +2,17 @@ package com.zxf.joke.ui.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.zxf.joke.R;
 import com.zxf.joke.data.entity.JokeImage;
-
 import com.zxf.joke.utils.FrescoUtils;
 import java.util.ArrayList;
 import java.util.List;

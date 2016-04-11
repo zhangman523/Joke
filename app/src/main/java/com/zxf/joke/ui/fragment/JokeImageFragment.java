@@ -2,7 +2,6 @@ package com.zxf.joke.ui.fragment;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,8 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import butterknife.Bind;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.Target;
 import com.zxf.joke.R;
 import com.zxf.joke.data.entity.JokeImage;
 import com.zxf.joke.presenter.JokeImagePresenter;
@@ -22,12 +19,7 @@ import com.zxf.joke.ui.view.IJokeView;
 import com.zxf.joke.utils.OkhttpUtils;
 import java.io.File;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import rx.Observable;
 import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by zhangman on 16/3/31 10:28.

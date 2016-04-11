@@ -15,6 +15,8 @@ android {
     versionCode 1
     versionName "1.0"
     buildConfigField "String", "JUHE_KEY", "\"" + JUHE_KEY + "\""
+    buildConfigField "String", "YOUMI_APP_ID", "\"" + YOUMI_APP_ID + "\""
+    buildConfigField "String", "YOUMI_SECRET", "\"" + YOUMI_SECRET + "\""
   }
 
   signingConfigs {
@@ -105,7 +107,6 @@ dependencies {
   compile 'com.jakewharton:butterknife:7.0.1'
   compile 'com.umeng.analytics:analytics:latest.integration'
   compile 'com.android.support:recyclerview-v7:23.2.1'
-  compile 'com.github.bumptech.glide:okhttp-integration:1.0+'
   compile 'com.android.support:cardview-v7:23.2.1'
   compile 'com.facebook.fresco:fresco:0.9.0'
   compile 'cn.edu.zafu:coreprogress:0.0.1'
