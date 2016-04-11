@@ -9,4 +9,5 @@ import android.os.Environment;
 public class Constant {
   public static String DATA_DIR =
       Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.zxf.joke/";
+  public static String FIRST_INIT = "FIRST_INIT";
 }

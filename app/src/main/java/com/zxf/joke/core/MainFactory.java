@@ -11,7 +11,7 @@ public class MainFactory {
 
   public static final String JOKE_KEY = BuildConfig.JUHE_KEY;
 
-  public static final int PAGE_SIZE = 20;
+  public static final int PAGE_SIZE = 10;
 
   public static Joke mJoke;
   protected static final Object monitor = new Object();

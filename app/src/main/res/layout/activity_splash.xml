@@ -23,4 +23,53 @@
       android:textColor="@android:color/white"
       android:textSize="25dp"
       />
+
+  <LinearLayout
+      android:id="@+id/splash_bm"
+      android:layout_width="match_parent"
+      android:layout_height="80dp"
+      android:layout_alignParentBottom="true"
+      android:visibility="gone"
+      >
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="30dp"
+        android:src="@mipmap/ic_splash"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="15dp"
+        android:text="@string/app_name"
+        android:textColor="@android:color/white"
+        android:textSize="18dp"
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:gravity="right"
+        android:paddingRight="15dp"
+        android:text="@string/enter"
+        android:textColor="@android:color/white"
+        android:textSize="18dp"
+        />
+    <ImageView
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="30dp"
+        android:src="@mipmap/ic_arrow"
+        />
+  </LinearLayout>
+  <FrameLayout
+      android:id="@+id/ad_frame"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_above="@id/splash_bm"
+      />
 </RelativeLayout>
