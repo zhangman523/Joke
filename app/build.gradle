@@ -62,22 +62,64 @@ android {
   }
   productFlavors {
     beta {
-      manifestPlaceholders = [UMENG_CHANNEL_VALUE: "beta", UMENG_KEY: GRADLE_UMENG_KEY]
+      manifestPlaceholders =
+          [UMENG_CHANNEL_VALUE: "beta", YOUMI_CHANNEL_VALUE: "30000", UMENG_KEY: GRADLE_UMENG_KEY]
+    }
+    goapk {
+      manifestPlaceholders =
+          [UMENG_CHANNEL_VALUE: "goapk", YOUMI_CHANNEL_VALUE: "10010", UMENG_KEY: GRADLE_UMENG_KEY]
+    }
+    gfan {
+      manifestPlaceholders =
+          [UMENG_CHANNEL_VALUE: "gfan", YOUMI_CHANNEL_VALUE: "10020", UMENG_KEY: GRADLE_UMENG_KEY]
+    }
+    hiapk {
+      manifestPlaceholders =
+          [UMENG_CHANNEL_VALUE: "hiapk", YOUMI_CHANNEL_VALUE: "10030", UMENG_KEY: GRADLE_UMENG_KEY]
+    }
+    m91sj {
+      manifestPlaceholders =
+          [UMENG_CHANNEL_VALUE: "91sj", YOUMI_CHANNEL_VALUE: "10110", UMENG_KEY: GRADLE_UMENG_KEY]
+    }
+    baidu {
+      manifestPlaceholders =
+          [UMENG_CHANNEL_VALUE: "baidu", YOUMI_CHANNEL_VALUE: "30000", UMENG_KEY: GRADLE_UMENG_KEY]
+    }
+    huaiwei {
+      manifestPlaceholders =
+          [UMENG_CHANNEL_VALUE: "huaiwei", YOUMI_CHANNEL_VALUE: "10220", UMENG_KEY: GRADLE_UMENG_KEY]
+    }
+    yingyongbao {
+      manifestPlaceholders =
+          [UMENG_CHANNEL_VALUE: "yingyongbao", YOUMI_CHANNEL_VALUE: "30000", UMENG_KEY: GRADLE_UMENG_KEY]
     }
     xiaomi {
-      manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi", UMENG_KEY: GRADLE_UMENG_KEY]
+      manifestPlaceholders =
+          [UMENG_CHANNEL_VALUE: "xiaomi", YOUMI_CHANNEL_VALUE: "10440", UMENG_KEY: GRADLE_UMENG_KEY]
     }
     m360 {
-      manifestPlaceholders = [UMENG_CHANNEL_VALUE: "m360", UMENG_KEY: GRADLE_UMENG_KEY]
+      manifestPlaceholders =
+          [UMENG_CHANNEL_VALUE: "360", YOUMI_CHANNEL_VALUE: "10190", UMENG_KEY: GRADLE_UMENG_KEY]
     }
     wandoujia {
-      manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia", UMENG_KEY: GRADLE_UMENG_KEY]
+      manifestPlaceholders =
+          [UMENG_CHANNEL_VALUE: "wandoujia", YOUMI_CHANNEL_VALUE: "10110", UMENG_KEY: GRADLE_UMENG_KEY]
     }
     fir {
-      manifestPlaceholders = [UMENG_CHANNEL_VALUE: "fir", UMENG_KEY: GRADLE_UMENG_KEY]
+      manifestPlaceholders =
+          [UMENG_CHANNEL_VALUE: "fir", YOUMI_CHANNEL_VALUE: "30000", UMENG_KEY: GRADLE_UMENG_KEY]
     }
     umeng {
-      manifestPlaceholders = [UMENG_CHANNEL_VALUE: "umeng", UMENG_KEY: GRADLE_UMENG_KEY]
+      manifestPlaceholders =
+          [UMENG_CHANNEL_VALUE: "umeng", YOUMI_CHANNEL_VALUE: "30000", UMENG_KEY: GRADLE_UMENG_KEY]
+    }
+    meizu {
+      manifestPlaceholders =
+          [UMENG_CHANNEL_VALUE: "meizu", YOUMI_CHANNEL_VALUE: "10280", UMENG_KEY: GRADLE_UMENG_KEY]
+    }
+    lianxiang {
+      manifestPlaceholders =
+          [UMENG_CHANNEL_VALUE: "lianxiang", YOUMI_CHANNEL_VALUE: "30000", UMENG_KEY: GRADLE_UMENG_KEY]
     }
   }
 }

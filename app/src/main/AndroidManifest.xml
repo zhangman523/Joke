@@ -39,6 +39,9 @@
         android:name="UMENG_CHANNEL"
         android:value="${UMENG_CHANNEL_VALUE}"/>
     <!--youmi-->
+    <meta-data
+        android:name="YOUMI_CHANNEL"
+        android:value="${YOUMI_CHANNEL_VALUE}"/>
     <activity
         android:name="net.youmi.android.AdBrowser"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
